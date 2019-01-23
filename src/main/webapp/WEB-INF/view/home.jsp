@@ -20,12 +20,28 @@
         This is a home page of a company called luv2code.
     </p>
 
+    <hr>
     <p>
         User: <security:authentication property="principal.username"/>
         <br>
         <br>
         Role(s): <security:authentication property="principal.authorities"/>
     </p>
+    <hr>
+
+    <security:authorize access="hasRole('MANAGER')">
+        <p>
+            <a href="${pageContext.request.contextPath}/leaders">Leadership meeting</a> (Only for managers peeps)
+        </p>
+        <hr>
+    </security:authorize>
+
+    <security:authorize access="hasRole('ADMIN')">
+        <p>
+            <a href="${pageContext.request.contextPath}/systems">IT systems meeting</a> (Only for admins peeps)
+        </p>
+        <hr>
+    </security:authorize>
 
     <form:form action="${pageContext.request.contextPath}/logout" method="post">
         <input type="submit" value="Logout">
