@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Spring security demo</title>
@@ -17,6 +18,13 @@
 
     <p>
         This is a home page of a company called luv2code.
+    </p>
+
+    <p>
+        User: <security:authentication property="principal.username"/>
+        <br>
+        <br>
+        Role(s): <security:authentication property="principal.authorities"/>
     </p>
 
     <form:form action="${pageContext.request.contextPath}/logout" method="post">
